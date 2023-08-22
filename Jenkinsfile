@@ -36,8 +36,8 @@ pipeline {
                 withCredentials([string(credentialsId: 'Docker-Hub-Pwd', variable: 'DockerHub')]) {
 
                     sh 'docker login --username prashantl --password ${DockerHub}'
-                    sh 'docker build -t prashantl/shopping-cart:latest'
-                    sh 'docker push prashant/shopping-cart:latest'
+                    sh 'docker tag shopping-cart:latest prashantl/shoppig-cart:latest'
+                    sh 'docker push prashantl/shopping-cart:latest'
                 }
             }
         }
