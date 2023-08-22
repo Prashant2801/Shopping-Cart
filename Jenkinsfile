@@ -33,8 +33,9 @@ pipeline {
         
         stage('Build And Push Docker Image') {
             steps {
-                withCredentials([credentialsId: '3c5f335d-db92-4417-825c-b90b8470ebc9', variable: 'dockerHubPwd')] {
-                    sh 'docker login --username prashantl --password ${dockerHubPwd}'
+                withCredentials([string(credentialsId: 'Docker-Hub-Pwd', variable: 'DockerHub')]) {
+
+                    sh 'docker login --username prashantl --password ${DockerHub}'
                     sh 'docker build -t prashantl/shopping-cart:latest'
                     sh 'docker push prashant/shopping-cart:latest'
                 }
