@@ -27,7 +27,7 @@ pipeline {
         
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t prashantl/shopping-cart:latest .'
+                sh 'docker build . -t prashantl/shopping-cart:latest -f docker/Dockerfile'
             }
         }
         
@@ -37,7 +37,7 @@ pipeline {
 
                     sh 'docker login --username prashantl --password ${DockerHub}'
                     sh 'docker build -t prashantl/shopping-cart:latest'
-                    sh 'docker push prashant/shopping-cart:latest'
+                    sh 'docker push prashantl/shopping-cart:latest'
                 }
             }
         }
