@@ -27,7 +27,7 @@ pipeline {
         
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t prashantl/shopping-cart:latest .'
+                sh 'docker build . -t prashantl/shopping-cart:latest -f docker/Dockerfile'
             }
         }
         
